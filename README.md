@@ -30,4 +30,4 @@ By now you can use `com.razi.descriptor.molecular.CountDescriptor` to count some
 	cd.cd.countAtomsByElement(element); // Number of all atoms which are the same with given `element`
 
 # What does *Razi* mean ? #
-[http://en.wikipedia.org/wiki/Muhammad_ibn_Zakariya_al-Razi](http://en.wikipedia.org/wiki/Muhammad_ibn_Zakariya_al-Razi "Muhammad ibn Zakariyā Rāzī") was a Persian alchemist and chemist.
+[Razi](http://en.wikipedia.org/wiki/Muhammad_ibn_Zakariya_al-Razi) was a Persian alchemist and chemist.
