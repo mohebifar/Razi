@@ -15,6 +15,6 @@ import java.io.File;
 public interface ReaderInterface {
     public void set(String string) throws Exception;
     public void set(File file) throws Exception;
-    public void process();
+    public void process() throws Exception;
     public Molecule get();
 }

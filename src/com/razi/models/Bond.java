@@ -17,10 +17,10 @@ public class Bond {
 
     /**
      * Construct a bond with certain order
-     * 
+     *
      * @param start
      * @param end
-     * @param order 
+     * @param order
      */
     public Bond(Atom start, Atom end, int order) {
         this.setStartAtom(start);
@@ -30,37 +30,39 @@ public class Bond {
 
     /**
      * Construct a bond with order 1
-     * 
+     *
      * @param start
-     * @param end 
+     * @param end
      */
     public Bond(Atom start, Atom end) {
         this.setStartAtom(start);
         this.setEndAtom(end);
     }
-    
+
     /**
      * Set first atom
-     * 
-     * @param atom 
+     *
+     * @param atom
      */
     public final void setStartAtom(Atom atom) {
         this.start = atom;
+        atom.addBond(this);
     }
 
     /**
      * Set end atom
-     * 
-     * @param atom 
+     *
+     * @param atom
      */
     public final void setEndAtom(Atom atom) {
         this.end = atom;
+        atom.addBond(this);
     }
 
     /**
      * Set order of atom
-     * 
-     * @param order 
+     *
+     * @param order
      */
     public void setOrder(int order) {
         this.order = order;
@@ -68,18 +70,22 @@ public class Bond {
 
     /**
      * Get order of bond
-     * 
-     * @return 
+     *
+     * @return
      */
     public int getOrder() {
         return this.order;
     }
 
+    public boolean isOrder(int order) {
+        return this.getOrder() == order;
+    }
+
     /**
      * Check if this bond contains given atom.
-     * 
+     *
      * @param atom
-     * @return 
+     * @return
      */
     public boolean hasAtom(Atom atom) {
         return atom == start || atom == end;
@@ -87,10 +93,10 @@ public class Bond {
 
     /**
      * Get given atom's partner.
-     * 
+     *
      * @param atom
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     public Atom getAtomByPartner(Atom atom) throws Exception {
         if (start == atom) {
@@ -101,33 +107,53 @@ public class Bond {
             throw new Exception("Given atom is not a part of this bond.");
         }
     }
-    
+
     /**
      * Check if this bond contains an atom with given element.
+     *
      * @param element
-     * @return 
+     * @return
      */
     public boolean hasAtomByElement(Element element) {
-        if(start.getElement() == element || end.getElement() == element) {
+        if (start.getElement() == element || end.getElement() == element) {
             return true;
         } else {
             return false;
         }
     }
-    
+
     /**
      * Gets the atom with given element.
+     *
      * @param element
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     public Atom getAtomByElement(Element element) throws Exception {
-        if(start.getElement() == element) {
+        if (start.getElement() == element) {
             return start;
-        } else if(end.getElement() == element) {
+        } else if (end.getElement() == element) {
             return end;
         } else {
             throw new Exception("There is no atom with given element");
         }
+    }
+
+    /**
+     * Returns start atom
+     * 
+     * @return Atom
+     */
+    public Atom getStart() {
+        return start;
+    }
+
+    /**
+     * Returns end atom
+     * 
+     * @return Atom
+     */
+    public Atom getEnd() {
+        return end;
     }
 }

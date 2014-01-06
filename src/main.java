@@ -1,29 +1,31 @@
-
-import com.razi.data.elements.ElementsLoader;
+import com.razi.descriptor.molecular.CountDescriptor;
+import com.razi.formats.mol.Writer;
 import com.razi.formats.smiles.Reader;
-import com.razi.models.Element;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type;
+import com.razi.models.Molecule;
 
-/*
- * Here comes the text of your license
- * Each line should be prefixed with  * 
- */
 /**
  *
  * @author Mohamad
  */
-public class NewMain {
+public class main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         try {
-            Reader a = new Reader();
-            a.set("As1ArCCC1");
-            a.process();
+            Reader sr = new Reader();
+            sr.set("C(=O)O");
+            sr.process();
+
+            Molecule mol = sr.get();
+
+            Writer mw = new Writer();
+            mw.set(mol);
+            mw.process();
+            System.out.println(mw.get());
             
-            
+            CountDescriptor cd = new CountDescriptor(mol);
         } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());
         }

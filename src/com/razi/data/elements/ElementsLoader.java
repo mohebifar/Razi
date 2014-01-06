@@ -89,7 +89,7 @@ public class ElementsLoader {
     }
 
     /**
-     * Checks if xml file loaded or not
+     * Checks if xml file is loaded or not
      * If it was not loaded, loads it
      */
     public static void checkLoad() {

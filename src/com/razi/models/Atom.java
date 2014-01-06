@@ -18,12 +18,16 @@ public class Atom {
     private ArrayList<Bond> bonds = new ArrayList<Bond>();
     private Element element;
 
-    public void Atom(Element element) {
+    public Atom(Element element) {
         this.element = element;
     }
 
     public Element getElement() {
         return this.element;
+    }
+    
+    public ArrayList<Bond> getBonds() {
+        return bonds;
     }
 
     /**
@@ -70,5 +74,9 @@ public class Atom {
         }
 
         return false;
+    }
+    
+    public void addBond(Bond bond) {
+        this.bonds.add(bond);
     }
 }
