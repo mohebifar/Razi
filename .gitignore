@@ -1,4 +1,4 @@
-/Razi/nbproject/private/
-/dist/
+/build
 /nbproject
 /build.xml
+/.gitignore
