@@ -1,7 +1,3 @@
-/*
- * Here comes the text of your license
- * Each line should be prefixed with  * 
- */
 package com.razi.formats.mol;
 
 import com.razi.formats.ReaderInterface;
@@ -9,8 +5,9 @@ import com.razi.models.Molecule;
 import java.io.File;
 
 /**
- *
- * @author Mohamad Mohebifar
+ * MolFile Reader
+ * 
+ * @author Mohamad Mohebifar <mohebifar.ir>
  */
 public class Reader implements ReaderInterface {
     private String table;

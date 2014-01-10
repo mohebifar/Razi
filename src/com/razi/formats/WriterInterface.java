@@ -8,7 +8,7 @@ package com.razi.formats;
 
 /**
  *
- * @author Mohamad
+ * @author Mohamad Mohebifar <mohebifar.ir>
  */
 public interface WriterInterface {
     

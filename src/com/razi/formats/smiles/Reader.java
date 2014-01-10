@@ -1,7 +1,3 @@
-/*
- * Here comes the text of your license
- * Each line should be prefixed with  * 
- */
 package com.razi.formats.smiles;
 
 import com.razi.data.elements.ElementsLoader;
@@ -14,8 +10,9 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- *
- * @author Mohamad Mohebifar
+ * SMILES Parser
+ * 
+ * @author Mohamad Mohebifar <mohebifar.ir>
  */
 public class Reader implements ReaderInterface {
 
