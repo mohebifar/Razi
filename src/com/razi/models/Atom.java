@@ -5,17 +5,19 @@
  */
 package com.razi.models;
 
+import com.vividsolutions.jts.geom.Coordinate;
 import java.util.ArrayList;
 
 /**
  * Atom Model
  *
- * @author Mohamad Mohebifar
+ * @author Mohamad Mohebifar <mohebifar.ir>
  * @version 0.1
  */
 public class Atom {
 
     private ArrayList<Bond> bonds = new ArrayList<Bond>();
+    private Coordinate position;
     private Element element;
 
     public Atom(Element element) {
@@ -25,7 +27,7 @@ public class Atom {
     public Element getElement() {
         return this.element;
     }
-    
+
     public ArrayList<Bond> getBonds() {
         return bonds;
     }
@@ -47,7 +49,10 @@ public class Atom {
     }
 
     /**
-     * Checking bond of this atom to another atom by given distance.
+     * Checking connectivity of this atom to another atom by given distance. For
+     * example Hydrogens in H-H are connected to each other by distance 1 or
+     * H-C-H are connected to each other by distance 2. In other words Hydrogens
+     * in H-C-H are in one three situation. (3-1 = 2)
      *
      * @param distance
      * @param atom
@@ -75,7 +80,12 @@ public class Atom {
 
         return false;
     }
-    
+
+    /**
+     * Assign a bond to this atom
+     *
+     * @param bond
+     */
     public void addBond(Bond bond) {
         this.bonds.add(bond);
     }
