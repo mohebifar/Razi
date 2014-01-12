@@ -15,20 +15,17 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package utils.math;
 
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.CoordinateFilter;
+package com.razi.forcefield.mmff;
+
+import com.razi.models.Atom;
 
 /**
  *
  * @author Mohamad Mohebifar <mohebifar.ir>
  */
-public class SphericalToCartesian implements CoordinateFilter {
-
-    @Override
-    public void filter(Coordinate crdnt) {
-        throw new UnsupportedOperationException("Not supported yet.");
+public class BondLength {
+    public static double getLength(Atom a, Atom b) {
+        return 1.0;
     }
-
 }

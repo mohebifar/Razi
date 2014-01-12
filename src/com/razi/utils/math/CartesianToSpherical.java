@@ -16,16 +16,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-package forcefield.mmff;
+package com.razi.utils.math;
 
-import com.razi.models.Atom;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.CoordinateFilter;
 
 /**
  *
  * @author Mohamad Mohebifar <mohebifar.ir>
  */
-public class BondLength {
-    public static double getLength(Atom a, Atom b) {
-        return 1.0;
+public class CartesianToSpherical implements CoordinateFilter {
+
+    @Override
+    public void filter(Coordinate crdnt) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+    
 }

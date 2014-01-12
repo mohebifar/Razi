@@ -16,20 +16,22 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-package utils.math;
+package com.razi.forcefield.mmff;
 
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.CoordinateFilter;
+import com.razi.models.Atom;
 
 /**
  *
  * @author Mohamad Mohebifar <mohebifar.ir>
  */
-public class CartesianToSpherical implements CoordinateFilter {
-
-    @Override
-    public void filter(Coordinate crdnt) {
-        throw new UnsupportedOperationException("Not supported yet.");
+public class BondAngle {
+    public static double getDegrees(Atom a, Atom b, Atom c) {
+        // TODO: Correct Angle
+        
+        return 109.48;
     }
-    
+
+    public static double getRadians(Atom a, Atom b, Atom c) {
+        return getDegrees(a, b, c) * Math.PI/180;
+    }
 }

@@ -15,19 +15,20 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+package com.razi.utils.math;
 
-package forcefield.mmff;
-
-import com.razi.models.Atom;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.CoordinateFilter;
 
 /**
  *
  * @author Mohamad Mohebifar <mohebifar.ir>
  */
-public class BondAngle {
-    public static double getBondAngle(Atom a, Atom b, Atom c) {
-        // TODO: Correct Angle
-        
-        return 109.48;
+public class SphericalToCartesian implements CoordinateFilter {
+
+    @Override
+    public void filter(Coordinate crdnt) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }
