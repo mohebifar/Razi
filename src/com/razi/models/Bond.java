@@ -156,4 +156,8 @@ public class Bond {
     public Atom getEnd() {
         return end;
     }
+    
+    public double getLength() {
+        return getStart().getPosition().distance(getEnd().getPosition());
+    }
 }

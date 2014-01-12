@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Atom {
 
     private ArrayList<Bond> bonds = new ArrayList<Bond>();
-    private Coordinate position;
+    private Coordinate position = new Coordinate(0, 0, 0);
     private Element element;
 
     public Atom(Element element) {
@@ -88,5 +88,14 @@ public class Atom {
      */
     public void addBond(Bond bond) {
         this.bonds.add(bond);
+    }
+    
+    /**
+     * Position of this atom
+     * 
+     * @return Coordinate
+     */
+    public Coordinate getPosition() {
+        return position;
     }
 }

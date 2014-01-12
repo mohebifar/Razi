@@ -27,7 +27,8 @@ public class Writer implements WriterInterface {
     public void process() throws Exception {
         result.append("Hello");
         breakLine();
-        result.append("Mohamad/Razi");
+        result.append(System.getProperty("user.name"));
+        result.append("/Razi");
         breakLine();
         makeCountLine();
         breakLine();
@@ -91,9 +92,9 @@ public class Writer implements WriterInterface {
     }
 
     private void makeAtomLine(Atom atom) {
-        result.append(fixCharacters(0.0, 10));
-        result.append(fixCharacters(0.0, 10));
-        result.append(fixCharacters(0.0, 10));
+        result.append(fixCharacters(atom.getPosition().x, 10));
+        result.append(fixCharacters(atom.getPosition().y, 10));
+        result.append(fixCharacters(atom.getPosition().z, 10));
         result.append(" ");
         result.append(fixCharacters(atom.getElement().getSymbol(), 3));
     }

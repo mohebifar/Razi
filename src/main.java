@@ -1,10 +1,8 @@
 
-import Jama.LUDecomposition;
-import Jama.Matrix;
 import com.razi.formats.mol.Writer;
 import com.razi.formats.smiles.Reader;
 import com.razi.models.Molecule;
-import com.vividsolutions.jts.geom.Coordinate;
+import forcefield.mmff.Generate3D;
 
 /**
  *
@@ -18,20 +16,21 @@ public class main {
     public static void main(String[] args) {
         try {
             Reader sr = new Reader();
-            sr.set("C(=O)O");
+            sr.set("C(H)(H)(H)H");
             sr.process();
 
             Molecule mol = sr.get();
-            Writer mw = new Writer();
-//            mw.set(mol);
-//            mw.process();
-//            System.out.println(mw.get());
 
 //            CountDescriptor cd = new CountDescriptor(mol);
-            
-            Coordinate a = new Coordinate();
+            Generate3D gen = new Generate3D(mol);
+            gen.process();
+
+            Writer mw = new Writer();
+            mw.set(mol);
+            mw.process();
+            System.out.println(mw.get());
         } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
+            System.out.println(e.getMessage());
         }
 
     }
