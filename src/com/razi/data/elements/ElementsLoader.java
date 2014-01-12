@@ -4,14 +4,13 @@
  */
 package com.razi.data.elements;
 
-import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import com.razi.models.Element;
+import java.io.InputStream;
+import java.net.URLClassLoader;
 
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -25,42 +24,28 @@ public class ElementsLoader {
     private final static ArrayList<Element> elements = new ArrayList<>();
     private static boolean loaded = false;
 
-    private static void load() {
-        URL url = ElementsLoader.class.getResource("Elements.xml");
-        File xml = new File(url.getPath());
-        xml.toString();
+    private static void load() throws Exception {
+        URLClassLoader urlLoader = (URLClassLoader) ElementsLoader.class.getClassLoader();
+        InputStream is = urlLoader.getResourceAsStream("elements.xml");
+
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 
-        try {
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(is);
+        NodeList nl = doc.getDocumentElement().getChildNodes();
+        for (int i = 0; i < nl.getLength(); i++) {
+            Node node = nl.item(i);
+            if (node instanceof org.w3c.dom.Element) {
 
-            try {
-                Document doc = dBuilder.parse(xml);
-                NodeList nl = doc.getDocumentElement().getChildNodes();
-                for (int i = 0; i < nl.getLength(); i++) {
+                org.w3c.dom.Element child = (org.w3c.dom.Element) node;
+                Element element = new Element();
 
-                    try {
-                        Node node = nl.item(i);
-                        if (node instanceof org.w3c.dom.Element) {
+                element.setName(child.getElementsByTagName("Name").item(0).getTextContent());
+                element.setSymbol(child.getElementsByTagName("Symbol").item(0).getTextContent());
 
-                            org.w3c.dom.Element child = (org.w3c.dom.Element) node;
-                            Element element = new Element();
-
-                            element.setName(child.getElementsByTagName("Name").item(0).getTextContent());
-                            element.setSymbol(child.getElementsByTagName("Symbol").item(0).getTextContent());
-
-                            element.setAtomicNumber(Integer.parseInt(child.getElementsByTagName("AtomicNumber").item(0).getTextContent()));
-                            elements.add(element);
-                        }
-                    } catch (Exception e) {
-                    }
-
-                }
-
-            } catch (Exception e) {
+                element.setAtomicNumber(Integer.parseInt(child.getElementsByTagName("AtomicNumber").item(0).getTextContent()));
+                elements.add(element);
             }
-
-        } catch (ParserConfigurationException e) {
         }
     }
 
@@ -89,10 +74,9 @@ public class ElementsLoader {
     }
 
     /**
-     * Checks if xml file is loaded or not
-     * If it was not loaded, loads it
+     * Checks if xml file is loaded or not If it was not loaded, loads it
      */
-    public static void checkLoad() {
+    public static void checkLoad() throws Exception {
         if (loaded != true) {
             load();
             loaded = true;
