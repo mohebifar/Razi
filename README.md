@@ -25,7 +25,7 @@ Use `com.razi.formats.smiles.Reader` for converting a SMILES string to Molecule 
 By now you can use `com.razi.descriptor.molecular.CountDescriptor` to count something in a molecule. For exmaple :
 
     cd.countAtoms(); // Number of all atoms
-    cd.countBonds(); // Number of all atoms
+    cd.countBonds(); // Number of all bonds
     cd.countBondsByOrder(2); // Number of bonds with order 2
 	cd.cd.countAtomsByElement(element); // Number of all atoms which are the same with given `element`
 
