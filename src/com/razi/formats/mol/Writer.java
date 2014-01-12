@@ -100,7 +100,7 @@ public class Writer implements WriterInterface {
     }
 
     private void makeAtomLines() {
-        for (Atom atom : molecule.getAtoms()) {
+        for (Atom atom : molecule) {
             makeAtomLine(atom);
             breakLine();
         }
@@ -109,8 +109,8 @@ public class Writer implements WriterInterface {
     
 
     private void makeBondLine(Bond bond) {
-        int start = 1 + molecule.getAtoms().indexOf(bond.getStart());
-        int end = 1 + molecule.getAtoms().indexOf(bond.getEnd());
+        int start = 1 + molecule.indexOf(bond.getStart());
+        int end = 1 + molecule.indexOf(bond.getEnd());
         
         result.append(fixCharacters(start, 3));
         result.append(fixCharacters(end, 3));

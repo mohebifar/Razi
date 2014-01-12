@@ -68,7 +68,7 @@ public class Reader implements ReaderInterface {
                     Element element = ElementsLoader.getAtomBySymbol(meaning.stringValue);
                     Atom atom = new Atom(element);
 
-                    molecule.addAtom(atom);
+                    molecule.add(atom);
 
                     if (lastAtom == null && layer > 0) {
                         lastAtom = getLastAtom(layer - 1);

@@ -10,35 +10,14 @@ import java.util.ArrayList;
  *
  * @author Mohamad
  */
-public class Molecule {
-
-    private ArrayList<Atom> atoms = new ArrayList<Atom>();
-
-    /**
-     * Adds an atom to the molecule
-     * 
-     * @param atom 
-     */
-    public void addAtom(Atom atom) {
-        atoms.add(atom);
-    }
-
-    /**
-     * Returns list of all atoms which exist in this molecule
-     * 
-     * @return 
-     */
-    public ArrayList<Atom> getAtoms() {
-        return atoms;
-    }
-
+public class Molecule extends AtomSet {
     /**
      * Returns list of all bonds which exist in this molecule
      * @return 
      */
     public ArrayList<Bond> getBonds() {
         ArrayList<Bond> bonds = new ArrayList<>();
-        for (Atom atom : this.getAtoms()) {
+        for (Atom atom : this) {
             for (Bond bond : atom.getBonds()) {
                 if (!bonds.contains(bond)) {
                     bonds.add(bond);

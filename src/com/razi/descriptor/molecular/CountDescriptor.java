@@ -24,12 +24,12 @@ public class CountDescriptor {
     }
 
     public int countAtoms() {
-        return molecule.getAtoms().size();
+        return molecule.size();
     }
 
     public int countAtomsByElement(Element element) {
         int count = 0;
-        for (Atom atom : molecule.getAtoms()) {
+        for (Atom atom : molecule) {
             if (atom.getElement() == element) {
                 count++;
             }

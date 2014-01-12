@@ -37,66 +37,55 @@ public class Generate3D {
     }
 
     public void process() throws Exception {
-        walk(molecule.getAtoms().get(0));
+        walk(molecule.get(0));
     }
 
-    private void walk(Atom a) throws Exception {
-        if(countWalked() == 0) {
-            // The atom can be anywhere all over the space
-            // We choose [0, 0, 0]
-            
-        } else if(countWalked() == 1) {
-            // The atom can be on a sphere that is as distant as r from the first atom.
-            // We choose [0, 0, r]
-            
-        } else if(countWalked() == 2) {
-            // The atom can be on a circumference
-            // We Choose cb + ba
-        }
-
-        // First Atom
-        for (Bond bond : a.getBonds()) {
-            Atom b = bond.getAtomByPartner(a);
-            ArrayList<Atom> cs = getCAtoms(a, b);
-            
-            if (! isWalked(b)) {
-                atoms.add(b);
-                double length = BondLength.getLength(a, b);
-                b.getPosition().z = length;
-                walk(b);
-            }
-        }
+    private void walk(Atom A) throws Exception {
+//        if (isWalked(A)) {
+//            return;
+//        } else {
+//            atoms.add(A);
+//        }
+//
+//        Atom B = getBestBAtom(A);
+//
+//        if (B == null) {
+//            System.out.println(getBAtoms(A).size());
+//            // The atom can be anywhere all over the space
+//            // We choose [0, 0, 0]
+//        } else {
+//            double length = BondLength.getLength(A, B);
+//            
+//            ArrayList<Atom> Cs = getCAtoms(A, B);
+//            filterNotWalked(Cs);
+//            if (Cs.size() == 0) {
+//                // The atom can be on a sphere that is as distant as r from the first atom.
+//                // We choose [0, 0, r]
+//                
+//                A.getPosition().x = B.getPosition().x;
+//                A.getPosition().y = B.getPosition().y;
+//                A.getPosition().z = B.getPosition().z + length;
+//            } else {
+//                
+//            }
+//        }
+//        
+//        for (Atom atom : getBAtoms(A)) {
+//            walk(atom);
+//        }
+//        
+//        else if(Bs.size() > 0) {
+//            
+//        } else if(countWalked() == 2) {
+//            // The atom can be on a circumference
+//            // We Choose cb + ba
+//        }
     }
 
-    private ArrayList<Atom> getCAtoms(Atom a, Atom b) {
-        ArrayList<Atom> cAtoms = new ArrayList<>();
-
-        for (Bond bond : b.getBonds()) {
-            for (Atom c : atoms) {
-                if (!c.equals(a)) {
-                    cAtoms.add(c);
-                }
-            }
-        }
-
-        return cAtoms;
-    }
-    
-    private ArrayList<Atom> getNotWalkedCAtoms(Atom a, Atom b) {
-        ArrayList<Atom> cAtoms = new ArrayList<>();
-        for (Atom atom : getCAtoms(a, b)) {
-            if(! isWalked(atom)) {
-                cAtoms.add(atom);
-            }
-        }
-        
-        return cAtoms;
-    }
-    
     private boolean isWalked(Atom atom) {
         return atoms.contains(atom);
     }
-    
+
     private int countWalked() {
         return atoms.size();
     }

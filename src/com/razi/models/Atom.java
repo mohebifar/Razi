@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Atom {
 
-    private ArrayList<Bond> bonds = new ArrayList<Bond>();
+    private BondSet bonds = new BondSet();
     private Coordinate position = new Coordinate(0, 0, 0);
     private Element element;
 
@@ -28,7 +28,7 @@ public class Atom {
         return this.element;
     }
 
-    public ArrayList<Bond> getBonds() {
+    public BondSet getBonds() {
         return bonds;
     }
 
