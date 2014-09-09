@@ -27,7 +27,7 @@ By now you can use `com.razi.descriptor.molecular.CountDescriptor` to count some
     cd.countAtoms(); // Number of all atoms
     cd.countBonds(); // Number of all bonds
     cd.countBondsByOrder(2); // Number of bonds with order 2
-	cd.cd.countAtomsByElement(element); // Number of all atoms which are the same with given `element`
+    cd.countAtomsByElement(element); // Number of all atoms which are the same with given `element`
 
 # What does *Razi* mean ? #
 [Razi](http://en.wikipedia.org/wiki/Muhammad_ibn_Zakariya_al-Razi) was a Persian alchemist and chemist.
